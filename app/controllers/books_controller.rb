@@ -12,7 +12,7 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.build(book_params)
     if @book.save
-      redirect_to book_path(@book.name), notice: "You have added #{@book.name} your collection"
+      redirect_to @book, notice: "You have added #{@book.name} your collection"
     else
       flash[:alert] = @book.errors.full_messages.to_sentence
       render 'new'
@@ -21,7 +21,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      redirect_to book_path(@book.name), notice: "Successfully updated"
+      redirect_to @book, notice: "Successfully updated"
     else
       flash[:alert] = @book.errors.full_messages.to_sentence
       set_book
@@ -45,6 +45,6 @@ class BooksController < ApplicationController
   end
 
   def set_book
-    @book = Book.find_by name: params[:name]
+    @book = Book.find params[:id]
   end
 end

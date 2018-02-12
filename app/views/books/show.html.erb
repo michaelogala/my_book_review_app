@@ -2,5 +2,5 @@
 
 <%= render 'book', book: @book %>
 
-<%= link_to 'Edit', edit_book_path(@book.name) %> |
-<%= link_to 'Delete', destroy_book_path(@book.name), method: :delete %>
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Delete', book_path(@book), method: :delete %>

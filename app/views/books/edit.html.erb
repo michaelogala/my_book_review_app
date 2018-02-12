@@ -1,5 +1,4 @@
 <h1>Books#update</h1>
 
-<%= form_for(:book, url: update_book_path(@book.name), method: 'put') do |f| %>
-  <%= render 'book_form', { book: @book, f: f } %>
-<% end %>
+
+<%= render 'book_form', { book: @book, f: f } %>

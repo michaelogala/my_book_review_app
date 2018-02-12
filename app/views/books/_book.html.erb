@@ -1,4 +1,6 @@
-<%= content_tag :h3, book.name %>
+<a href="<%= book_path(book) %>">
+  <%= content_tag :h3, book.name %>
+</a>
 <%= content_tag :p, book.author %>
 <p>
  Added by <%= book.owner.full_name %>
