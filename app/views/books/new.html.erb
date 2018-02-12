@@ -1,3 +1,4 @@
 <h1>Books#new</h1>
-
-<%= render 'book_form', { book: @book } %>
+<%= form_for(:book, url: books_path) do |f| %>
+  <%= render 'book_form', { book: @book, f: f } %>
+<% end %>

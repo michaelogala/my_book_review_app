@@ -12,20 +12,21 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.build(book_params)
     if @book.save
-      redirect_to books_path, notice: "You have added #{@book.name} your collection"
+      redirect_to book_path(@book.name), notice: "You have added #{@book.name} your collection"
     else
-      flash[:alert] = @book.errors
+      flash[:alert] = @book.errors.full_messages.to_sentence
       render 'new'
     end
   end
 
-  def show
-  end
-  
-  def edit
-  end
-
   def update
+    if @book.update(book_params)
+      redirect_to book_path(@book.name), notice: "Successfully updated"
+    else
+      flash[:alert] = @book.errors.full_messages.to_sentence
+      set_book
+      render 'edit'
+    end
   end
 
   def destroy

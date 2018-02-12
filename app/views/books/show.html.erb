@@ -1,3 +1,5 @@
 <h1>Books#show</h1>
 
 <%= render 'book', book: @book %>
+
+<%= link_to 'Edit', edit_book_path(@book.name) %>
