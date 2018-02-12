@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   delete  'logout'       => 'sessions#destroy', as: 'logout'
 
   resources :books, only: [:new, :create, :index]
-  get     '/:name'       => 'books#show',       as: 'book'
-  get     '/:name/edit'  => 'books#edit',       as: 'edit_book'
-  put     '/:name'       => 'books#update',     as: 'update_book'
-  delete  '/:name'       => 'books#destroy',    as: 'destroy_book'
+  get     'books/:name'       => 'books#show',       as: 'book'
+  get     'books/:name/edit'  => 'books#edit',       as: 'edit_book'
+  put     'books/:name'       => 'books#update',     as: 'update_book'
+  delete  'books/:name'       => 'books#destroy',    as: 'destroy_book'
 end

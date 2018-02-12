@@ -1,5 +1,7 @@
 <h1>Books#index</h1>
 
 <% @books.each do |book| %>
-  <%= render 'book', { book: book } %>
+  <a href="<%= book_path(book.name) %>">
+    <%= render 'book', { book: book } %>
+  </a>
 <% end %>

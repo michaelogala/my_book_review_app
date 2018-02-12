@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :set_book, except: [:index, :new, :create]
+  
   def index
     @books = current_user.books
   end
@@ -37,5 +39,9 @@ class BooksController < ApplicationController
             :name,
             :author
           )
+  end
+
+  def set_book
+    @book = Book.find_by name: params[:name]
   end
 end
