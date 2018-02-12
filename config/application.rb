@@ -11,6 +11,7 @@ module BookReview
 
     config.generators do |g|
       g.test_framework nil
+      g.javascript_engine :js
     end
   end
 end
