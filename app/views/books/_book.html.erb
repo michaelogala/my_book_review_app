@@ -1,2 +1,5 @@
 <%= content_tag :h3, book.name %>
 <%= content_tag :p, book.author %>
+<p>
+ Added by <%= book.owner.full_name %>
+ </p>
