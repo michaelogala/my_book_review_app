@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :ensure_login, only: [:new, :create]
 
   def create
     user = User.find_by(username: params[:user][:username])
@@ -13,5 +14,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session[:user_id] = nil
+    redirect_to '/', notice: 'You have been logged out'
   end
 end
