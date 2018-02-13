@@ -4,3 +4,13 @@
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Delete', book_path(@book), method: :delete %>
+
+<h3>Say something about this book</h3>
+<%= form_for(:review, url: book_reviews_path(@book)) do |f| %>
+  <%= f.text_area :comment, size: '25x5' %> <br>
+  <%= f.submit 'Post' %>
+<% end %>
+
+<h3>Other Reviews</h3>
+
+<%= render @book.reviews %>

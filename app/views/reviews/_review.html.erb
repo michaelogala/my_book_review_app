@@ -1,0 +1,8 @@
+<div>
+  <%= review.reviewer.full_name %> said
+  <p>
+    <%= simple_format review.comment %>
+  </p>
+  <%= time_ago_in_words review.created_at %> ago
+</div>
+<br>
