@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   delete  'logout'       => 'sessions#destroy', as: 'logout'
   
   resources :books do
-    resources :reviews, only: [:create, :delete]
+    resources :reviews, only: [:create, :destroy]
   end
 end

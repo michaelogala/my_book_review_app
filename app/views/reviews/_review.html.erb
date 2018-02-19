@@ -3,6 +3,9 @@
   <p>
     <%= simple_format review.comment %>
   </p>
-  <%= time_ago_in_words review.created_at %> ago
+  <em><%= time_ago_in_words review.created_at %> ago</em>
+  <p>
+    <%= link_to 'Delete', book_review_path(review.book, review), method: :delete %>
+  </p>
 </div>
 <br>
