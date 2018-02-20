@@ -8,4 +8,8 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def liked?(subject)
+    likes.find_by(likeable: subject).present?
+  end
 end
