@@ -11,7 +11,7 @@
   <p>
     <%= pluralize review.likes.count, 'Like' %> |
     <% if current_user.liked?(review) %>
-      <%= link_to 'Unlike', book_review_like_path(review.book, review), method: :delete %>
+      <%= link_to 'Unlike', book_review_like_path(review.book, review, current_user.like(review)), method: :delete %>
     <% else %>
       <%= link_to 'Like', book_review_likes_path(review.book, review), method: :post %>
     <% end %>

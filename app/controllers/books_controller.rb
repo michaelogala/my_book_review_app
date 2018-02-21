@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :set_book, except: [:index, :new, :create]
   
   def index
-    @books = current_user.books
+    @books = current_user.books.includes(:owner, :reviews)
   end
 
   def new

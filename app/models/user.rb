@@ -10,6 +10,10 @@ class User < ApplicationRecord
   end
 
   def liked?(subject)
-    likes.find_by(likeable: subject).present?
+    like(subject).present?
+  end
+
+  def like(subject)
+    likes.find_by(likeable: subject)
   end
 end
