@@ -45,6 +45,6 @@ class BooksController < ApplicationController
   end
 
   def set_book
-    @book = Book.find params[:id]
+    @book = Book.includes(:owner, reviews: [:likes, :reviewer]).find params[:id]
   end
 end

@@ -9,7 +9,7 @@
   </p>
 
   <p>
-    <%= pluralize review.likes.count, 'Like' %> |
+    <%= pluralize review.likes.size, 'Like' %> |
     <% if current_user.liked?(review) %>
       <%= link_to 'Unlike', book_review_like_path(review.book, review, current_user.like(review)), method: :delete %>
     <% else %>
