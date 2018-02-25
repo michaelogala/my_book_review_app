@@ -14,7 +14,7 @@ class User < ApplicationRecord
   end
 
   def like(subject)
-    liked ||= likes.where(likeable: subject)
+    liked ||= likes.find_by(likeable: subject)
     liked
   end
 end

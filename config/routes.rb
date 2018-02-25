@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   resources :books do
     resources :reviews, only: [:create, :destroy] do
-      resources :likes, only: [:create, :destroy]
+      resources :likes, only: [:create, :destroy], controller: 'review_likes'
     end
   end
 end

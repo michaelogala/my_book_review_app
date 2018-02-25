@@ -1,4 +1,4 @@
-class LikesController < ApplicationController
+class ReviewLikesController < ApplicationController
   before_action :set_likeable, only: [:create]
   before_action :set_like, only: [:destroy]
 
