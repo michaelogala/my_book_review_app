@@ -3,5 +3,7 @@
 </a>
 <%= content_tag :p, book.author %>
 <p>
- Added by <%= book.owner.full_name %> | <%= pluralize(book.reviews.size, 'comment') %>
+ Added by <%= book.owner.full_name %> | 
+ <%= pluralize(book.reviews.size, 'comment') %> | 
+ <%= pluralize(book.likes.size, 'like') %>
  </p>

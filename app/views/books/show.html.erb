@@ -2,6 +2,11 @@
 
 <%= render 'book', book: @book %>
 
+<% if current_user.liked?(@book) %>
+  <%= link_to 'Unlike', book_like_path(@book, current_user.like(@book)), method: :delete %>
+<% else %>
+  <%= link_to 'Like', book_likes_path(@book), method: :post %>
+<% end %>
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Delete', book_path(@book), method: :delete %>
 
