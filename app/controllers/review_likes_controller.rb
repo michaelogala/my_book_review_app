@@ -1,10 +1,10 @@
 class ReviewLikesController < ApplicationController
-  before_action :set_likeable, only: [:create]
+  before_action :set_review, only: [:create]
   before_action :set_like, only: [:destroy]
 
   def create
-    current_user.likes.create(likeable: @likeable)
-    redirect_to @likeable.book
+    current_user.likes.create(likeable: @review)
+    redirect_to @review.book
   end
 
   def destroy
@@ -14,10 +14,8 @@ class ReviewLikesController < ApplicationController
 
   private
 
-  def set_likeable
-    @likeable = if params.keys.include? 'review_id'
-                  Review.find(params[:review_id])
-                end
+  def set_review
+    @review = Review.find(params[:review_id])
   end
 
   def set_like
