@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :books
-  has_many :reviews
-  has_many :likes
+  has_many :reviews, dependent: :destroy
+  has_many :likes, dependent: :destroy
   validates :first_name, :last_name, :username, :password, :password_confirmation, presence: true
   has_secure_password
 

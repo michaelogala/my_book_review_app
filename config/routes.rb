@@ -7,13 +7,13 @@ Rails.application.routes.draw do
   delete  'logout'       => 'sessions#destroy', as: 'logout'
   
   resources :books do
-    resources :likes, only: [:create, :destroy], controller: 'book_likes'
+    resources :likes,   only: [:create, :destroy], controller: 'book_likes'
     resources :reviews, only: [:create, :destroy] do
       resources :likes, only: [:create, :destroy], controller: 'review_likes'
     end
   end
 
-  get '/profile' => 'users#show'
+  get '/profile'      => 'users#show'
   get '/profile/edit' => 'users#edit'
-  resources :users, only: [:update]
+  resources :users, only: [:update, :create, :new]
 end
