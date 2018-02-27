@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       resources :likes, only: [:create, :destroy], controller: 'review_likes'
     end
   end
+
+  get '/profile' => 'users#show'
 end

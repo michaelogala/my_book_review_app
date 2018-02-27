@@ -1,0 +1,32 @@
+<div>
+  <h3>Personal Info</h3>
+  <p>
+    First Name: <%= current_user.first_name %> <br/>
+    Last Name: <%= current_user.last_name %> <br/>
+    Username: <%= current_user.username %> <br/>
+  </p>
+</div>
+
+<div>
+  <h3>Statistics</h3>
+  <p>
+    Total No. of Books Added: <%= current_user.books.size %> <br/>
+    Total No. of Books Reviewed: <%= current_user.reviewed_books.size %> <br/>
+    No. of Favourite Books: <%= current_user.favorite_books.size %> <br/>
+  </p>
+</div>
+
+<div>
+  <h3>My Books</h3>
+  <%= render current_user.books %>
+</div>
+
+<div>
+  <h3>Favorite Books</h3>
+  <%= render current_user.favorite_books %>
+</div>
+
+<div>
+  <h3>Reviewed Books</h3>
+  <%= render current_user.reviewed_books %>
+</div>

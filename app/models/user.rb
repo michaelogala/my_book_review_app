@@ -17,4 +17,16 @@ class User < ApplicationRecord
     liked ||= likes.find_by(likeable: subject)
     liked
   end
+
+  def reviewed_books
+    Book.includes(reviews: :reviewer).select do |b|
+      b.reviews.find { |r| r.reviewer.id == self.id }
+    end
+  end
+
+  def favorite_books
+    Book.includes(:likes).select do |b|
+      b.likes.find { |l| l.user_id == self.id }
+    end
+  end
 end
