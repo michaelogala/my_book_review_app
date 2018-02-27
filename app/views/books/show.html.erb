@@ -7,8 +7,12 @@
 <% else %>
   <%= link_to 'Like', book_likes_path(@book), method: :post %>
 <% end %>
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Delete', book_path(@book), method: :delete %>
+
+<% if current_user == @book.owner %>
+  <%= link_to 'Edit', edit_book_path(@book) %> |
+  <%= link_to 'Delete', book_path(@book), method: :delete %>
+<% end %>
+
 
 <h3>Say something about this book</h3>
 <%= form_for(:review, url: book_reviews_path(@book)) do |f| %>

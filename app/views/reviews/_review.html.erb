@@ -4,9 +4,12 @@
     <%= simple_format review.comment %>
   </p>
   <em><%= time_ago_in_words review.created_at %> ago</em>
-  <p>
-    <%= link_to 'Delete', book_review_path(review.book, review), method: :delete %>
-  </p>
+
+  <% if current_user == review.reviewer %>
+    <p>
+      <%= link_to 'Delete', book_review_path(review.book, review), method: :delete %>
+    </p>
+  <% end %>
 
   <p>
     <%= pluralize review.likes.size, 'Like' %> |
