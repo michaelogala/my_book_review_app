@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_many :books
   has_many :reviews
   has_many :likes
-  validates :first_name, :last_name, :username, presence: true
+  validates :first_name, :last_name, :username, :password, :password_confirmation, presence: true
   has_secure_password
 
   def full_name

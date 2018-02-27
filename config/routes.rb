@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   end
 
   get '/profile' => 'users#show'
+  get '/profile/edit' => 'users#edit'
+  resources :users, only: [:update]
 end
