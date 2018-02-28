@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_book
+  before_action :set_review, only: [:destroy, :like, :unlike]
 
   def create
     @review = @book.reviews.build(review_params.merge(reviewer: current_user))
@@ -11,7 +12,18 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @book.reviews.find(params[:id]).destroy
+    @review.destroy
+    redirect_to @book
+  end
+
+  def like
+    @review.likes.create user: current_user
+    redirect_to @book
+  end
+
+  def unlike
+    like = @review.likes.find(params[:like_id])
+    like.destroy
     redirect_to @book
   end
 
@@ -19,6 +31,10 @@ class ReviewsController < ApplicationController
 
   def set_book
     @book = Book.find(params[:book_id])
+  end
+
+  def set_review
+    @review = @book.reviews.find(params[:id])
   end
 
   def review_params
