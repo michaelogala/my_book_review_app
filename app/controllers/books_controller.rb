@@ -34,6 +34,17 @@ class BooksController < ApplicationController
     redirect_to books_path, notice: 'Book deleted'
   end
 
+  def like
+    @book.likes.create user: current_user
+    redirect_to @book
+  end
+
+  def unlike
+    like = @book.likes.find params[:like_id]
+    like.destroy
+    redirect_to @book
+  end
+
   private
 
   def book_params

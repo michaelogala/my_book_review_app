@@ -3,9 +3,9 @@
 <%= render 'book', book: @book %>
 
 <% if current_user.liked?(@book) %>
-  <%= link_to 'Unlike', book_like_path(@book, current_user.like(@book)), method: :delete %>
+  <%= link_to 'Unlike', unlike_book_path(@book, current_user.like(@book)), method: :delete %>
 <% else %>
-  <%= link_to 'Like', book_likes_path(@book), method: :post %>
+  <%= link_to 'Like', like_book_path(@book), method: :post %>
 <% end %>
 
 <% if current_user == @book.owner %>
