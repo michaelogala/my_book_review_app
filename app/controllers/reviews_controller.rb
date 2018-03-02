@@ -18,13 +18,19 @@ class ReviewsController < ApplicationController
 
   def like
     @review.likes.create user: current_user
-    redirect_to @book
+    respond_to do |format|
+      format.html { redirect_to @book }
+      format.js { render 'review' }
+    end
   end
 
   def unlike
     like = @review.likes.find(params[:like_id])
     like.destroy
-    redirect_to @book
+    respond_to do |format|
+      format.html { redirect_to @book }
+      format.js { render 'review' }
+    end
   end
 
   private

@@ -1,0 +1,2 @@
+document.querySelector("[data-review-id='<%= @review.id %>']")
+  .innerHTML = "<%= j(render @review) %>"

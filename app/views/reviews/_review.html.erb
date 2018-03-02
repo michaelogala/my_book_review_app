@@ -1,4 +1,4 @@
-<div>
+<div data-review-id=<%= review.id %>>
   <%= review.reviewer.full_name %> said
   <p>
     <%= simple_format review.comment %>
@@ -14,9 +14,9 @@
   <p>
     <%= pluralize review.likes.size, 'Like' %> |
     <% if current_user.liked?(review) %>
-      <%= link_to 'Unlike', unlike_book_review_path(review.book, review, current_user.like(review)), method: :delete %>
+      <%= link_to 'Unlike', unlike_book_review_path(review.book, review, current_user.like(review)), method: :delete, remote: true %>
     <% else %>
-      <%= link_to 'Like', like_book_review_path(review.book, review), method: :post %>
+      <%= link_to 'Like', like_book_review_path(review.book, review), method: :post, remote: true %>
     <% end %>
   </p>
 </div>
