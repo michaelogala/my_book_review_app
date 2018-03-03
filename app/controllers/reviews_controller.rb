@@ -4,10 +4,13 @@ class ReviewsController < ApplicationController
 
   def create
     @review = @book.reviews.build(review_params.merge(reviewer: current_user))
-    if @review.save
-      redirect_to @book, notice: 'Your comment was saved'
-    else
-      redirect_to @book, alert: @book.errors.full_messages.to_sentence
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to @book, notice: 'Your comment was saved' }
+        format.js
+      else
+        format.html { redirect_to @book, alert: @book.errors.full_messages.to_sentence }
+      end
     end
   end
 

@@ -1,0 +1,5 @@
+const review = new DOMParser().parseFromString("<%= j(render @review) %>")
+
+document.getElementById('reviews').appendChild(review)
+
+document.querySelector("textarea#review_comment").value = ""
