@@ -7,7 +7,7 @@
 
   <% if current_user == review.reviewer %>
     <p>
-      <%= link_to 'Delete', book_review_path(review.book, review), method: :delete %>
+      <%= link_to 'Delete', book_review_path(review.book, review), method: :delete, remote: true %>
     </p>
   <% end %>
 

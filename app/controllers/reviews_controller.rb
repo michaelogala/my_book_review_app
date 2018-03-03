@@ -16,7 +16,10 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to @book
+    respond_to do |format|
+      format.html { redirect_to @book }
+      format.js
+    end
   end
 
   def like

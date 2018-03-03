@@ -1,5 +1,9 @@
-const review = new DOMParser().parseFromString("<%= j(render @review) %>")
+let review = document.createRange()
+                       .createContextualFragment("<%= j(render @review) %>")
 
 document.getElementById('reviews').appendChild(review)
 
 document.querySelector("textarea#review_comment").value = ""
+
+let bookDetailsDiv = document.getElementById('book-details')
+bookDetailsDiv.innerHTML = "<%= j(render @book) %>"

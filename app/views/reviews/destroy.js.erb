@@ -1,0 +1,5 @@
+review = document.querySelector("[data-review-id='<%= @review.id %>']")
+review.remove()
+
+bookDetailsDiv = document.getElementById('book-details')
+bookDetailsDiv.innerHTML = "<%= j(render @book) %>"

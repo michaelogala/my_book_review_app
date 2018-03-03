@@ -1,6 +1,8 @@
 <h1>Books#show</h1>
 
-<%= render 'book', book: @book %>
+<div id="book-details">
+  <%= render @book %>
+</div>
 
 <% if current_user.liked?(@book) %>
   <%= link_to 'Unlike', unlike_book_path(@book, current_user.like(@book)), method: :delete %>
@@ -15,7 +17,7 @@
 
 
 <h3>Say something about this book</h3>
-<%= form_for(:review, url: book_reviews_path(@book)) do |f| %>
+<%= form_for(:review, url: book_reviews_path(@book), remote: true) do |f| %>
   <%= f.text_area :comment, size: '25x5' %> <br>
   <%= f.submit 'Post' %>
 <% end %>
