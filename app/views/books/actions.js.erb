@@ -1,0 +1,5 @@
+document.getElementById('book-details')
+        .innerHTML = "<%= j(render @book) %>"
+        
+document.querySelector('.book-actions')
+        .innerHTML = "<%= j(render 'actions', book: @book) %>"

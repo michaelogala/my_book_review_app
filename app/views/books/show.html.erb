@@ -4,16 +4,9 @@
   <%= render @book %>
 </div>
 
-<% if current_user.liked?(@book) %>
-  <%= link_to 'Unlike', unlike_book_path(@book, current_user.like(@book)), method: :delete %>
-<% else %>
-  <%= link_to 'Like', like_book_path(@book), method: :post %>
-<% end %>
-
-<% if current_user == @book.owner %>
-  <%= link_to 'Edit', edit_book_path(@book) %> |
-  <%= link_to 'Delete', book_path(@book), method: :delete %>
-<% end %>
+<div class="book-actions">
+  <%= render 'actions', book: @book %>
+</div>
 
 
 <h3>Say something about this book</h3>

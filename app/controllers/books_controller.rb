@@ -36,13 +36,19 @@ class BooksController < ApplicationController
 
   def like
     @book.likes.create user: current_user
-    redirect_to @book
+    respond_to do |format|
+      format.html { redirect_to @book }
+      format.js { render 'actions' }
+    end
   end
 
   def unlike
     like = @book.likes.find params[:like_id]
     like.destroy
-    redirect_to @book
+    respond_to do |format|
+      format.html { redirect_to @book }
+      format.js { render 'actions' }
+    end
   end
 
   private
