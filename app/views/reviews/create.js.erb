@@ -1,5 +1,5 @@
 let review = document.createRange()
-                       .createContextualFragment("<%= j(render @review) %>")
+                     .createContextualFragment("<%= j(render @review) %>")
 
 document.getElementById('reviews').appendChild(review)
 
