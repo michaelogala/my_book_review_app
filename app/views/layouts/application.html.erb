@@ -10,20 +10,40 @@
 
   <body>
 
-    <%= link_to 'Home', books_path %> |
-    <% if logged_in? %>
-      Logged in as <%= current_user.username %> |
-      <%= link_to 'Profile', profile_path %>
-      <%= link_to 'Logout', logout_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Login', login_path %> |
-      <%= link_to 'Join', new_user_path %>
-    <% end %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+        <%= link_to 'Book Review', root_path, class: 'navbar-brand' %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+          <% if logged_in? %>
+            <li class="nav-item">
+              <%= link_to 'Profile', profile_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Logout', logout_path, method: :delete, class: 'nav-link' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Login', login_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Join', new_user_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-    <% flash.each do |key, value| %>
-      <p><%= value %> </p>
-    <% end %>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <p><%= value %> </p>
+      <% end %>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'home#index'
+  root 'books#index'
 
   get     'login'        => 'sessions#new',     as: 'login'
   post    'authenticate' => 'sessions#create',  as: 'authenticate'
