@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_book
-  before_action :set_review, only: [:destroy, :like, :unlike]
+  before_action :set_review, only: %i[destroy like unlike]
 
   def create
     @review = @book.reviews.build(review_params.merge(reviewer: current_user))

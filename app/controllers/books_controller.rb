@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
-  before_action :set_book, except: [:index, :new, :create]
-  
+  before_action :set_book, except: %i[index new create]
+
   def index
     @books = Book.includes(:owner, :reviews).all
   end
@@ -21,7 +21,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      redirect_to @book, notice: "Successfully updated"
+      redirect_to @book, notice: 'Successfully updated'
     else
       flash[:alert] = @book.errors.full_messages.to_sentence
       set_book
@@ -62,6 +62,6 @@ class BooksController < ApplicationController
   end
 
   def set_book
-    @book = Book.includes(:owner, reviews: [:likes, :reviewer]).find params[:id]
+    @book = Book.includes(:owner, reviews: %i[likes reviewer]).find params[:id]
   end
 end
