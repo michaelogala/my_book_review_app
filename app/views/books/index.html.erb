@@ -1,5 +1,6 @@
 <h1>Books#index</h1>
-
-<% @books.each do |book| %>
-  <%= render 'book', { book: book } %>
-<% end %>
+<div class="list-group list-group-flush">
+  <% @books.each do |book| %>
+    <%= link_to render('book', { book: book }), book_path(book), class: 'list-group-item list-group-item-action' %>
+  <% end %>
+</div>
