@@ -1,9 +1,9 @@
-<a href="<%= book_path(@book) %>">
-  <%= content_tag :h3, @book.name %>
+<a href="<%= book_path(book) %>">
+  <%= content_tag :h3, book.name %>
 </a>
-<%= content_tag :p, @book.author %>
+<%= content_tag :p, book.author %>
 <p>
- Added by <%= @book.owner.full_name %> | 
- <%= pluralize(@book.reviews.size, 'comment') %> | 
- <%= pluralize(@book.likes.size, 'like') %>
+ Added by <%= book.owner.full_name %> |
+ <%= pluralize(book.reviews.size, 'comment') %> |
+ <%= pluralize(book.likes.size, 'like') %>
  </p>
