@@ -1,23 +1,25 @@
-<div data-review-id=<%= review.id %>>
-  <%= review.reviewer.full_name %> said
-  <p>
-    <%= simple_format review.comment %>
-  </p>
-  <em><%= time_ago_in_words review.created_at %> ago</em>
 
-  <% if current_user == review.reviewer %>
-    <p>
-      <%= link_to 'Delete', book_review_path(review.book, review), method: :delete, remote: true %>
-    </p>
-  <% end %>
+<div class="card mb-3" data-review-id=<%= review.id %>>
+  <div class="card-header">
+    <%= review.reviewer.full_name %>
+  </div>
 
-  <p>
-    <%= pluralize review.likes.size, 'Like' %> |
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <%= simple_format review.comment, class: 'lead', style: 'font-size:1rem' %>
+      <footer class="blockquote-footer"><em><%= time_ago_in_words review.created_at %> ago</em></footer>
+    </blockquote>
+  </div>
+
+  <div class="card-footer">
     <% if current_user.liked?(review) %>
-      <%= link_to 'Unlike', unlike_book_review_path(review.book, review, current_user.like(review)), method: :delete, remote: true %>
+      <%= link_to pluralize(review.likes.size, 'Like'), unlike_book_review_path(review.book, review, current_user.like(review)), method: :delete, remote: true, class: 'btn btn-primary btn-sm' %>
     <% else %>
-      <%= link_to 'Like', like_book_review_path(review.book, review), method: :post, remote: true %>
+      <%= link_to pluralize(review.likes.size, 'Like'), like_book_review_path(review.book, review), method: :post, remote: true, class: 'btn btn-primary btn-sm' %>
     <% end %>
-  </p>
+
+    <% if current_user == review.reviewer %>
+      <%= link_to 'Delete', book_review_path(review.book, review), method: :delete, remote: true, class: 'btn btn-danger btn-sm' %>
+    <% end %>
+  </div>
 </div>
-<br>

@@ -1,10 +1,10 @@
 <% if current_user.liked?(book) %>
-  <%= link_to 'Unlike', unlike_book_path(book, current_user.like(book)), method: :delete, remote: true %>
+  <%= link_to 'Unlike', unlike_book_path(book, current_user.like(book)), method: :delete, remote: true, class: 'btn btn-outline-dark btn-sm' %>
 <% else %>
-  <%= link_to 'Like', like_book_path(book), method: :post, remote: true %>
+  <%= link_to 'Like', like_book_path(book), method: :post, remote: true, class: 'btn btn-outline-dark btn-sm' %>
 <% end %>
 
 <% if current_user == book.owner %>
-  <%= link_to 'Edit', edit_book_path(book) %> |
-  <%= link_to 'Delete', book_path(book), method: :delete %>
+  <%= link_to 'Edit', edit_book_path(book), class: 'btn btn-outline-primary btn-sm' %>
+  <%= link_to 'Delete', book_path(book), method: :delete, class: 'btn btn-outline-danger btn-sm' %>
 <% end %>

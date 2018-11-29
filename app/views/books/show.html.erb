@@ -8,15 +8,19 @@
   <%= render 'actions', book: @book %>
 </div>
 
+<hr>
 
-<h3>Say something about this book</h3>
+<h5 class="mt-5">Say something about this book</h5>
 <%= form_for(:review, url: book_reviews_path(@book), remote: true) do |f| %>
-  <%= f.text_area :comment, size: '25x5' %> <br>
-  <%= f.submit 'Post' %>
+  <%= f.text_area :comment, size: '25x5', class: 'form-control' %> <br>
+  <%= f.submit 'Post', class: 'btn btn-primary' %>
 <% end %>
 
-<h3>Other Reviews</h3>
+<br>
+<hr>
 
-<div id="reviews"> 
+<h5 class="mt-5">Other Reviews</h5>
+
+<div id="reviews">
   <%= render @book.reviews %>
 </div>
