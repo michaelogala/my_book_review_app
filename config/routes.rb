@@ -17,7 +17,6 @@ Rails.application.routes.draw do
         post 'like'
         delete 'unlike/:like_id', action: :unlike, as: 'unlike'
       end
-      # resources :likes, only: [:create, :destroy], controller: 'review_likes'
     end
   end
 
