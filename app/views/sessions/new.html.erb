@@ -1,15 +1,20 @@
-<%= content_tag :h2, 'Log In' %>
+<div class="row mt-5 pt-3">
+  <div class="col-md-6 offset-md-3">
+    <%= content_tag :h4, 'Log In', class: 'text-center' %>
 
-<%= form_for(:user, url: authenticate_path) do |f| %>
-  <p>
-    <%= f.text_field :username %>
-  </p>
+    <%= form_for(:user, url: authenticate_path) do |f| %>
+      <div class="form-group">
+        <%= f.label :username %>
+        <%= f.text_field :username, class: 'form-control', placeholder: 'Username' %>
+      </div>
 
-  <p>
-    <%= f.password_field :password %>
-  </p>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+      </div>
 
-  <p>
-    <%= f.submit 'Log In' %>
-  </p>
-<% end %>
+      <%= f.submit 'Log In', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>
+
