@@ -40,7 +40,9 @@
 
     <div class="container pt-2 mt-5">
       <% flash.each do |key, value| %>
-        <p><%= value %> </p>
+        <div class="alert alert-<%= alert_type(key) %>">
+          <%= value %>
+        </div>
       <% end %>
 
       <%= yield %>
