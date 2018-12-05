@@ -1,15 +1,18 @@
+<div class="row mt-5 pt-3">
+  <div class="col-md-6 offset-md-3">
+
+  </div>
+</div>
 <%= form_for(@book) do |f| %>
-  <p>
+  <div class="form-group">
     <%= f.label :name %> <br>
-    <%= f.text_field :name %>
-  </p>
+    <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :author %> <br>
-    <%= f.text_field :author %>
-  </p>
+    <%= f.text_field :author, class: 'form-control', placeholder: 'Author' %>
+  </div>
 
-  <p>
-    <%= f.submit %>
-  </p>
+  <%= f.submit class: 'btn btn-primary btn-block' %>
 <% end %>
